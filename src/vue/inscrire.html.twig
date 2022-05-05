@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} S'inscrire {% endblock %}
+
+{% block contenu %}
+{% if form.valide is defined %}
+ {% if form.valide == true %}
+ <h1>Inscription réussie</h1>
+ <h1>Voici votre identifiant : {{form.email}}</h1>
+ {% if form.role == 1 %}
+    <h1>Vous êtes administrateur du site</h1>
+ {% else %}
+    <h1>Vous êtes un client du site </h1>
+ {% endif %}
+ {% else %}
+
+ <h1>Echec de l'inscription</h1>
+ <h1>Erreur : {{form.message}}</h1>
+ <h1><a href="index.php?page=inscrire">Retourner sur la page d'inscription</a></h1>
+ {% endif %}
+
+{% else %}
+
+<div class="centrer" style="display: flex; justify-content: center; ">
+   <form action="index.php?page=inscrire" method="post" enctype="application/x-www-formurlencoded" style="width: 50%; ">
+
+   <h1 style="margin-top: 30px; margin-bottom: 30px; text-align: center;">Inscrivez-vous</h1>
+
+   
+   <input style="margin-bottom: 15px;" type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required autofocus>
+   
+   <input style="margin-bottom: 15px;" type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
+   
+   <input style="margin-bottom: 15px;" type="password" id="inputPassword2" name="inputPassword2" class="form-control" placeholder="Confirmation mot de passe" required>
+   
+   <input style="margin-bottom: 15px;" type="text" id="inputNom" name="inputNom" class="form-control" placeholder="nom" required>
+   
+   <input style="margin-bottom: 15px;" type="text" id="inputPrenom" name="inputPrenom" class="form-control" placeholder="Prenom" required>
+
+
+   <select class="form-control" name="role" style="margin-bottom: 15px;">
+   <option value="1">Administrateur</option>
+   <option value="2">Client</option>
+   </select>
+   <button class="btn btn-lg btn-primary btn-block" type="submit" name="btInscrire" style="margin-bottom: 15px;">S'inscrire</button>
+
+   </form>
+</div>
+{% endif %}
+{% endblock %}

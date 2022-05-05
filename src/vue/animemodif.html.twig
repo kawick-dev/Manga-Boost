@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% block title %} {{ parent() }} Modif {% endblock %}
+{% block contenu %}
+<h1 style = "text-align: center; margin-bottom: 2%;margin-top: 2%;">Modifier</h1>
+<div style="display: flex; justify-content: center; margin-top: 50px">
+<form action="index.php?page=modifanime" method="post" enctype="multipart/form-data"  style="width: 50%;">
+
+<input type="text" id="titre" name="titre" class="form-control" placeholder="Titre" required autofocus style="margin-bottom: 15px;" value="{{form.titreanime}}"> </select>
+
+<input type="text" id="description" name="description" class="form-control" placeholder="Description" required autofocus style="margin-bottom: 15px;" value="{{form.descriptionanime}}"> </select>
+
+<input type="number" id="nbsaison" name="nbsaison" class="form-control" placeholder="Nombre de saison" required autofocus style="margin-bottom: 15px;" value="{{form.nbsaisonanime}}"> </select>
+
+<input type="text" id="studioanime" name="studioanime" class="form-control" placeholder="Studio d'Animation" required autofocus style="margin-bottom: 15px;" value="{{form.studioanime}}"> </select>
+
+
+<select class="form-control" id="statut" name="statut" style="margin-bottom: 15px;">
+   <option value="1">Termine</option>
+   <option value="2">En cours</option>
+   <option value="3">En pause</option>
+</select>
+<input type="hidden" name="id" value="{{ form.anime.id}}"/>
+
+<button class="btn btn-lg btn-primary btn-block" type="submit" name="btModifanime" style="margin-top: 30px; margin-bottom: 30px; text-align: center;">Actualiser les informations</button>
+</div>
+
+</form>
+{% endblock %}

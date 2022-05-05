@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="fr">
+ <head>
+ <!-- Required meta tags -->
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <!-- Bootstrap CSS -->
+ <link rel="stylesheet"
+href="https://bootswatch.com/4/lux/bootstrap.min.css">
+ <title>{% block title %} Manga-Boost {% endblock %} </title>
+ </head>
+ <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">Manga-Boost</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="index.php?page=accueil">Home</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?page=listeanime">Liste anime</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?page=listemanga">Liste manga</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="index.php?page=actu">Actualités</a>
+      </li>
+
+
+    </ul>
+  </div>
+  
+  {%if session.login is defined %}
+          <li class="navbar-nav ml-auto">
+            <a class="btn btn-primary" href="index.php?page=deconnexion">Se déconnecter</a>
+          </li>
+          <li class="navbar-nav ml-auto">
+            <a class="btn btn-primary" href="index.php?page=modif">Modif</a>
+          </li>
+          {% else %}
+          <div >
+              <ul class="navbar-nav ml-auto">
+                <a class="btn btn-primary" href="index.php?page=connexion" role="button" style= "margin-right: 1%;">Connexion</a>
+                <a class="btn btn-primary" href="index.php?page=inscrire" role="button">Inscription</a>
+              </ul
+          </div>
+      {% endif %}
+          {%if session.login is defined %}
+          <li class="navbar-nav ml-auto">
+            <a class="btn btn-primary" href="index.php?page=profil">{{session.login}}</a>
+          </li>
+      {% endif %}
+      {%if session.login is defined %}
+        {%if session.role == 1 %}
+
+          <li class="nav-item dropdown show">
+
+            <a class="btn btn-primary" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" > 
+              Administration</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="index.php?page=ajoutemanga">Ajouter un manga</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="index.php?page=ajouteanime">Ajouter un anime</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="index.php?page=utilisateur">Utilisateur</a>
+
+          </li>
+
+
+        {% endif %}
+      {% endif %}
+</nav>
+ 
+{% block contenu %}
+
+{% endblock %}
+ <!-- Optional JavaScript -->
+ <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-
+J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+integrity="sha384-
+Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+integrity="sha384-
+wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+crossorigin="anonymous"></script>
+ </body>
+</html> 

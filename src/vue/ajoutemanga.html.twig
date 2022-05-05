@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} Ajouter un manga {% endblock %}
+
+{% block contenu %} 
+
+<div style="display: flex; justify-content: center; margin-top: 50px">
+<form action="index.php?page=ajoutemanga" method="post" enctype="multipart/form-data"  style="width: 50%;">
+
+<input type="text" id="titre" name="titre" class="form-control" placeholder="Titre" required autofocus style="margin-bottom: 15px;"> </select>
+
+<input type="text" id="description" name="description" class="form-control" placeholder="Description" style="margin-bottom: 15px;"> </select>
+
+<input type="number" id="nbtome" name="nbtome" class="form-control" placeholder="Nombre de volume" style="margin-bottom: 15px;"> </select>
+
+<input type="text" id="auteur" name="auteur" class="form-control" placeholder="Auteur" style="margin-bottom: 15px;"> </select>
+
+<input type="text" id="dessinateur" name="dessinateur" class="form-control" placeholder="Dessinateur" style="margin-bottom: 15px;"> </select>
+
+<input type="date" id="sortiedate" name="sortiedate" class="form-control" placeholder="Date de sortie" style="margin-bottom: 15px;"> </select>
+
+<input type="float" id="prix" name="prix" class="form-control" placeholder="Prix" style="margin-bottom: 15px;"> </select>
+
+<input type="file" id="photo" name="photo" class="form-control" required autofocus style="margin-bottom: 15px;">
+
+<select class="form-control" id="statut" name="statut" style="margin-bottom: 15px;">
+   <option value="1">Termine</option>
+   <option value="2">En cours</option>
+   <option value="3">En pause</option>
+</select>
+
+<button class="btn btn-lg btn-primary btn-block" type="submit" name="btAjoutermanga" style="margin-top: 30px; margin-bottom: 30px; text-align: center;">Ajouter un manga</button>
+</div>
+
+
+
+</form>
+{% endblock %} 

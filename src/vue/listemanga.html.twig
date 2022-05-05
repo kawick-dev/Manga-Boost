@@ -1,0 +1,89 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} Liste Manga {% endblock %}
+
+{% block contenu %} 
+
+<h1 style = "text-align: center; margin-bottom: 2%;margin-top: 2%;">Liste Manga</h1> 
+
+{% if form.etat is defined %}
+ {% if form.etat == true %}
+ <h1 class="h3 mb-3 font-weight-normal">Suppression réussie</h1>
+ {% else %}
+ <h1 class="alert alert-danger" role="alert">Problème d'insertion</h1>
+ {% endif %}
+{% endif %}
+
+    {% for t in liste %}
+
+<div class="card mb-3" style="min-height: 300px;max-width: 840px; margin: auto; display:flex;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="images/{{t.photo}}" style = "width: 110%;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+
+        <h5 class="card-title">{{t.titre}}</h5>
+        <p class="card-text">{{t.description}}</p>
+        <p class="card-text">Nombre de volume: {{t.nbtome}}</p>
+        <strong class="card-text">Prix: {{t.prix}} €</strong>       
+        {% if t.statut == 2 %}
+
+          <p class="card-text">Statut: En cours</p>
+
+        {% elseif t.statut == 1 %}
+          <p class="card-text">Statut: Termine</p>
+        {% else %}
+          <p class="card-text">Statut: Termine</p>          
+        {% endif %}
+        
+        
+        {%if session.login is defined %}
+          {%if session.role == 1 %}
+
+          <div style= " display: inline-block; margin-left: 50%;">
+            <div class="btn btn-warning" style= "background-color: #1E90FF;"><a href="index.php?page=modifmanga&id={{t.id}}">Modifier</a></div>
+            <div class="btn btn-warning" style= "background-color: #f44336;"><a href="index.php?page=listemanga&id={{t.id}}">Supprimer</a></div>
+          </div>
+
+          {% endif %}
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% set nb = form.nbpages %}
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center m-4 p-4">
+        <li class="page-item {% if form.nopage == 0 %}disabled{% endif %}">
+          <a class="page-link" href="index.php?page=listemanga&nopage={{ 0 }}" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
+        </li>
+
+        {% for i in 1..nb %}
+          <li class="page-item {% if i ==form.nopage +1 %} active{% endif %}"><a class="page-link" href="index.php?page=listemanga&nopage={{ i-1 }}">{{ i }}<span class="sronly"></span></a></li>
+
+
+        {% endfor %}
+
+        <li class="page-item {% if form.nopage == form.nbpages-1 %}disabled{% endif %}">
+          <a class="page-link" href="index.php?page=listemanga&nopage={{ nb-1 }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+        </li>
+      </ul>
+    </nav>
+
+    
+
+
+{% endblock %}
+
+
+

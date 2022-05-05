@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} Accueil {% endblock %}
+
+{% block contenu %} 
+
+
+<div style="display: flex; justify-content: center;"> 
+
+<form action="index.php?page=connexion" method="post" enctype="application/x-www-formurlencoded" style="width: 50%;">
+
+ <h1 style="margin-top: 30px; margin-bottom: 30px; text-align: center;">Connexion</h1>
+
+ <input style="margin-bottom: 15px;" type="email" id="inputEmail" name="inputEmail" class="form-control" placeholder="Email" required autofocus>
+
+ 
+ <input style="margin-bottom: 15px;" type="password" id="inputPassword" name="inputPassword" class="form-control" placeholder="Mot de passe" required>
+
+ <button class="btn btn-lg btn-primary btn-block" type="submit"
+name="btConnecter">connexion</button>
+</div>
+{% endblock %} 

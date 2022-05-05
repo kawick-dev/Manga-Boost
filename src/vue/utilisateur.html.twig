@@ -1,0 +1,48 @@
+{% extends "base.html.twig" %}
+
+{% block title %} {{ parent() }} Utilisateur {% endblock %}
+
+{% block contenu %} 
+
+{% if form.etat is defined %}
+ {% if form.etat == true %}   
+
+    <div class="alert alert-success" role="alert" style= "background-color: white; margin-left: auto; margin-right: auto; width: 25%;border-color: white; margin-top: 1%;">
+        <h1 style= "color: #228B22;">Suppression réussie</h1>
+    </div>
+ {% else %}   
+    <div class="alert alert-success" role="alert" style= "background-color: white; margin-left: auto; margin-right: auto; width: 25%;border-color: white; margin-top: 1%;">
+        <h1 style= "color: #f44336;">Problème d'insertion</h1>
+    </div>
+ {% endif %}
+{% endif %}
+
+    <div class="table-responsive">
+    <table class="table">
+    <thead>
+    <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Email</th>
+    <th scope="col">Nom</th>
+    <th scope="col">Prénom</th>
+    <th scope="col">Rôle</th>
+    <th scope="col">Supprimer</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for u in liste %}
+        <tr>
+            <td>{{u.id}}</td>
+            <td>{{u.email}}</td>
+            <td>{{u.nom}}</td>
+            <td>{{u.prenom}}</td>
+            <td>{{u.role}}</td>>
+            <td><div class="btn btn-warning" style= "background-color: #f44336;"><a href="index.php?page=utilisateur&id={{u.id}}">Supprimer</a></div></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+    </div>
+
+{% endblock %} 
+
